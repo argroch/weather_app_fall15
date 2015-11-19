@@ -44,6 +44,25 @@ class WelcomeController < ApplicationController
 		  @weather_words = response['current_observation']['weather'] 
 		  @forecast_link = response['current_observation']['forecast_url']
 		  @real_feel = response['current_observation']['feelslike_f']
+
+
+		  if @weather_words == "Clear"
+		  	@body_class = "sunny"
+		  elsif @weather_words == "Snow"
+		  	@body_class = "snow"
+		  elsif @weather_words == "Rain"
+		  	@body_class = "rain"
+		  elsif @weather_words == "Cloudy" || @weather_words == "Overcast"
+		  	@body_class = "cloudy"
+		  elsif @weather_words == "Partly Cloudy" || @weather_words == "Scattered Clouds"
+		  	@body_class = "partly-cloudy"
+		  elsif @weather_words == "Fog"
+		  	@body_class = "fog"
+		  elsif @weather_words == "Thunderstorms and Rain" || @weather_words == "Thunderstorms"
+		  	@body_class = "thunder"
+		  end
+		  	
+		  		
 		end
   end
 end
